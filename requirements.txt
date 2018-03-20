@@ -1,0 +1,4 @@
+uvloop
+ujson
+mypy
+aiohttp
