@@ -19,7 +19,7 @@ clean-pyc:
 	find . -name '*~' -exec rm -f {} +
 
 mypy:
-	mypy accumulator.py
+	mypy accumulator.py --ignore-missing-imports
 
 test:
 	pytest

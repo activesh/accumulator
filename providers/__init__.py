@@ -22,7 +22,7 @@ def get_provider(url: str) -> BaseProvider:
     except parser.ParserError:
         raise NoProviderFound()
 
-    provider_class = get_provider_class(parsed.resource)
+    provider_class = get_provider_class(parsed.resource)  # type: ignore
 
     return provider_class()
 
