@@ -1,0 +1,2 @@
+class NoProviderFound(Exception):
+    pass

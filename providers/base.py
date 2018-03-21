@@ -1,2 +1,3 @@
 class BaseProvider:
-    pass
+    async def fetch(self):
+        pass
