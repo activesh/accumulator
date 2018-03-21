@@ -38,17 +38,20 @@ class Parser(object):
         self._url = url
 
     def get_parsed(self):
-        return collections.namedtuple('Parsed', [
-            'pathname',
-            'protocols',
-            'protocol',
-            'href',
-            'resource',
-            'user',
-            'port',
-            'name',
-            'owner',
-        ])
+        return collections.namedtuple(
+            'Parsed',
+            [
+                'pathname',
+                'protocols',
+                'protocol',
+                'href',
+                'resource',
+                'user',
+                'port',
+                'name',
+                'owner',
+            ],
+        )
 
     def parse(self):
         """
@@ -70,18 +73,24 @@ class Parser(object):
             'owner': None,
         }
 
-        regexp = (r'^(https?|git|ssh|rsync)\://'
-                  '(?:(.+)@)*'
-                  '([a-z0-9_.-]*)'
-                  '[:/]*'
-                  '([\d]+){0,1}'
-                  '(/(.+)/(.+).git)')
+        regexp = (
+            r'^(https?|git|ssh|rsync)\://'
+            '(?:(.+)@)*'
+            '([a-z0-9_.-]*)'
+            '[:/]*'
+            '([\d]+){0,1}'
+            '(/(.+)/(.+)'
+            '(.git)?)'
+        )
         m1 = re.search(regexp, self._url)
 
-        regexp = (r'^(?:(.+)@)*'
-                  '([a-z0-9_.-]*)[:/]*'
-                  '([\d]+){0,1}'
-                  '([:/](.+)/(.+).git)')
+        regexp = (
+            r'^(?:(.+)@)*'
+            '([a-z0-9_.-]*)[:/]*'
+            '([\d]+){0,1}'
+            '([:/](.+)/(.+)'
+            '(.git)?)'
+        )
         m2 = re.search(regexp, self._url)
 
         if m1:
@@ -112,5 +121,6 @@ class Parser(object):
             index = self._url.index('://')
 
             return self._url[0:index].split('+')
+
         except ValueError:
             return []

@@ -5,10 +5,7 @@ from .github import GitHubProvider
 from utils import parser
 from exceptions import NoProviderFound
 
-
-SUPPORTTED_PROVIDERS = {
-    'github': GitHubProvider
-}
+SUPPORTTED_PROVIDERS = {'github': GitHubProvider}
 
 
 def get_provider_class(resource_name: str) -> Type[BaseProvider]:
@@ -30,7 +27,4 @@ def get_provider(url: str) -> BaseProvider:
     return provider_class()
 
 
-__all__ = (
-    'get_provider',
-    'BaseProvider',
-)
+__all__ = ('get_provider', 'BaseProvider')
