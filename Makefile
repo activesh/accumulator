@@ -1,4 +1,4 @@
-.PHONY: black clean test
+.PHONY: black clean mypy test
 
 black:
 	black ./ -l 79 --fast
@@ -17,6 +17,9 @@ clean-pyc:
 	find . -name '*.pyc' -exec rm -f {} +
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +
+
+mypy:
+	mypy accumulator.py
 
 test:
 	pytest
