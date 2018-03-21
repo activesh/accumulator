@@ -1,4 +1,7 @@
-.PHONY: clean test
+.PHONY: black clean test
+
+black:
+	black ./ -l 79 --fast
 
 clean: clean-pyc clean-cache
 
