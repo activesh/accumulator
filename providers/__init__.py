@@ -24,7 +24,7 @@ def get_provider(url: str) -> BaseProvider:
 
     provider_class = get_provider_class(parsed.resource)  # type: ignore
 
-    return provider_class()
+    return provider_class(parsed.repo)  # type: ignore
 
 
 __all__ = ('get_provider', 'BaseProvider')

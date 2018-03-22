@@ -50,6 +50,7 @@ class Parser(object):
                 'port',
                 'name',
                 'owner',
+                'repo',
             ],
         )
 
@@ -71,6 +72,7 @@ class Parser(object):
             'port': None,
             'name': None,
             'owner': None,
+            'repo': None,
         }
 
         regexp = (
@@ -101,6 +103,7 @@ class Parser(object):
             d['port'] = m1.group(4)
             d['name'] = m1.group(7)
             d['owner'] = m1.group(6)
+            d['repo'] = f"{m1.group(6)}/{m1.group(7).replace('.git', '')}"
         elif m2:
             d['pathname'] = re.sub(r'^:', '', m2.group(4))
             d['protocol'] = 'ssh'
@@ -108,6 +111,7 @@ class Parser(object):
             d['user'] = m2.group(1)
             d['name'] = m2.group(6)
             d['owner'] = m2.group(5)
+            d['repo'] = f"{m2.group(5)}/{m2.group(6).replace('.git', '')}"
         else:
             msg = "Invalid URL '{}'".format(self._url)
             raise ParserError(msg)
