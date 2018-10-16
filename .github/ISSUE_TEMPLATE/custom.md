@@ -1,6 +1,6 @@
 ---
 name: Custom issue template
-about: Describe this issue template's purpose here.
+about: This is a test [with a link](https://community.sanicframework.org/)
 
 ---
 
